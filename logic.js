@@ -20,9 +20,10 @@
     otherwise return "red";
 */
 function getColor(number) {
-  // Uncomment and complete
-  return /* ( Your code Here ) ?  Your code Here  :  Your code Here */;
+
+  return (number > 10 ) ?  blue  :  red;
 }
+
 
 /* 
    -------TESTS---------------------------------------------------------------
@@ -50,7 +51,7 @@ console.log(getColor(10) === "red");
 */
 function lightStatus(brightness) {
   let result = "";
-  // Put your logic here
+      console.log()
   return result;
 }
 
