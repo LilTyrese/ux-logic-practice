@@ -20,8 +20,7 @@
     otherwise return "red";
 */
 function getColor(number) {
-
-  return (number > 10 ) ?  blue  :  red;
+  return (number > 10 ) ?  "blue"  :  "red";
 }
 
 
@@ -49,10 +48,14 @@ console.log(getColor(10) === "red");
     otherwise if the brightness is greater than zero but less that 200, return "dimmed"
     if the brightness is greater than or equal to 200, then return "on"
 */
-function lightStatus(brightness) {
-  let result = "";
-      console.log()
-  return result;
+function lightStatus(brightness){
+   if(brightness == 0){
+     return "off"
+   } else if (brightness >= 200){
+     return "on"
+   } else if (brightness > 0 < 200){
+     return "dimmed"
+   }
 }
 
 /* 
@@ -89,14 +92,36 @@ console.log(lightStatus(255) === "on");
 
 function getLightBulbStatusDisplayString(status) {
   let result = "";
-  /* uncomment and complete
-    switch( your code here ) {
-      case "your code here": 
-        your code here;
+    switch(status) {
+      case "on": 
+        result = "The house is bright!"
         break;
-      etc...
+      case "dimmed":
+        result = "The house is nice and dim";
+          break;
+      case "deleted":
+          result = "The lightbulb has been removed from the system";
+            break;
+      case "off":
+      result = "The house is dark";
+          break;
+
+      case "broken":
+      result = "The house is dark and we can't turn the light on!"
+        break;
+
+      case "offline":
+        result = "The house is dark and we can't find the lightbulb!"
+        break;
+      
+        case "missing":
+          result = "The house is dark and we can't find the lightbulb!"
+        break;
+
+      default:
+        result = "Something is wrong!"
+        break;
     }
-    */
   return result;
 }
 
@@ -229,8 +254,34 @@ function updateLights(
   turnOnLight("livingRoomLight");
   // example of turning off a light
   turnOffLight("livingRoomLight");
-}
 
+  if(!somebodyIsHome){
+    turnOffLight("livingRoomLight");
+    turnOffLight("diningRoomLight");
+    turnOffLight("kitchenLight");
+    turnOffLight("bedroomLight");
+    turnOnLight("frontPorchLight")
+  } else {
+    if(!theyWentToBed){
+      turnOnLight("livingRoomLight")
+      turnOnLight("diningRoomLight")
+    } else {
+      turnOnLight("bedroomLight")
+    }
+    if(theyAreCooking){
+      turnOnLight("kitchenLight")
+    }
+    if(theyAreWatchingTV){
+      turnOffLight("livingRoomLight")
+      turnOffLight("diningRoomLight")
+    }
+    if(itIsDarkOutside){
+      turnOnLight("frontPorchLight")
+    } else {
+      turnOffLight("frontPorchLight")
+    }
+  }
+  
 /* 
    -------TESTS---------------------------------------------------------------
    Run these commands to make sure you did it right. They should all be true.
